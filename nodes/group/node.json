@@ -1,0 +1,37 @@
+{
+  "name": "group",
+  "ns": "group",
+  "async": true,
+  "description": "Groups input into an array",
+  "phrases": {
+    "active": "Grouping object"
+  },
+  "ports": {
+    "input": {
+      "xin": {
+        "title": "In Group",
+        "type": "any"
+      },
+      "in": {
+        "title": "Object",
+        "type": "any"
+      }
+    },
+    "output": {
+      "xout": {
+        "title": "Xout",
+        "type": "array"
+      },
+      "out": {
+        "title": "out",
+        "group": "result",
+        "type": "any"
+      }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "chix-group": "psichi/chix-group"
+    }
+  }
+}

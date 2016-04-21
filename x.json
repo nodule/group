@@ -1,0 +1,140 @@
+{
+  "name": "group",
+  "description": "Group nodes for Chiχ",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/group.git"
+  },
+  "dependencies": {
+    "chix-group": "nodule/group"
+  },
+  "nodes": [
+    {
+      "dependencies": {
+        "npm": {
+          "chix-group": "psichi/chix-group"
+        }
+      },
+      "ports": {
+        "input": {
+          "in": {
+            "title": "Object",
+            "type": "any"
+          },
+          "xin": {
+            "title": "In Group",
+            "type": "any"
+          },
+          "by": {
+            "title": "Group By",
+            "type": "any"
+          }
+        },
+        "output": {
+          "out": {
+            "title": "out",
+            "group": "result",
+            "type": "boolean"
+          },
+          "by": {
+            "title": "Group By",
+            "group": "result",
+            "type": "any"
+          },
+          "xout": {
+            "title": "Xout",
+            "type": "array"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Grouping object"
+      },
+      "description": "Groups an object by it's differentiator",
+      "async": true,
+      "ns": "group",
+      "name": "by",
+      "fn": "on.start = function () {\n  state.groupBy = chix_group.groupBy.create()\n  state.groupBy.on('group', function (group, by) {\n    var $ = state.$\n    var g = chix_group.send.create()\n    output({xout: g.open()})\n    output({out: g.write($.create(group)), by: $.create(by)})\n    output({xout: g.close()})\n  })\n}\n\n\non.input.in = function () {\n  state.groupBy.add($.get('in'))\n}\n\non.input.by = function () {\n  state.groupBy.setBy($.get('by'))\n}\n\non.input.xin = function () {\n  state.$ = $\n  state.groupBy.receive($.get('xin'))\n}\n"
+    },
+    {
+      "dependencies": {
+        "npm": {
+          "chix-group": "psichi/chix-group"
+        }
+      },
+      "ports": {
+        "input": {
+          "xin": {
+            "title": "In Group",
+            "type": "any"
+          },
+          "in": {
+            "title": "Object",
+            "type": "any"
+          }
+        },
+        "output": {
+          "xout": {
+            "title": "Xout",
+            "type": "array"
+          },
+          "out": {
+            "title": "out",
+            "group": "result",
+            "type": "any"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Grouping object"
+      },
+      "description": "Groups input into an array",
+      "async": true,
+      "ns": "group",
+      "name": "group",
+      "fn": "on.start = function start() {\n  state.group = chix_group.recv.create()\n  state.$ = null\n  state.group.on('group', function groupHandler(group) {\n    var p = state.$.create(group)\n    p.removeMeta('chix-group')\n    output({out: p})\n  })\n}\n\non.input.in = function () {\n  state.group.add($.get('in'))\n  state.$ = $\n};\n\non.input.xin = function () {\n  state.group.receive($.get('xin'))\n  state.$ = $\n};\n"
+    },
+    {
+      "dependencies": {
+        "npm": {
+          "chix-group": "psichi/chix-group"
+        }
+      },
+      "ports": {
+        "input": {
+          "in1": {
+            "title": "In 1",
+            "type": "any"
+          },
+          "in2": {
+            "title": "In 2",
+            "type": "any"
+          },
+          "xin": {
+            "title": "In Group",
+            "type": "object"
+          }
+        },
+        "output": {
+          "out1": {
+            "title": "Out 1",
+            "type": "any"
+          },
+          "out2": {
+            "title": "Out 2",
+            "type": "any"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Synchronizing items"
+      },
+      "description": "Synchronizes group items on 2 different ports",
+      "async": true,
+      "ns": "group",
+      "name": "sync",
+      "fn": "on.start = function () {\n  state.sync = chix_group.sync.create(['out1', 'out2'])\n  state.sync.on('sync', function (itemId, set) {\n    var $ = state.$\n    var out = {}\n    Object.keys(set).forEach(function (port) {\n      out[port] = $.create(set[port])\n    })\n    output(out)\n  })\n}\n\non.input.in1 = function () {\n  state.sync.add('out1', $.get('in1'))\n}\n\non.input.in2 = function () {\n  state.sync.add('out2', $.get('in2'))\n}\n\non.input.xin = function () {\n  state.$ = $\n  state.sync.receive($.get('xin'))\n}\n"
+    }
+  ]
+}

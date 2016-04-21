@@ -1,0 +1,46 @@
+{
+  "name": "by",
+  "ns": "group",
+  "async": true,
+  "description": "Groups an object by it's differentiator",
+  "phrases": {
+    "active": "Grouping object"
+  },
+  "ports": {
+    "input": {
+      "in": {
+        "title": "Object",
+        "type": "any"
+      },
+      "xin": {
+        "title": "In Group",
+        "type": "any"
+      },
+      "by": {
+        "title": "Group By",
+        "type": "any"
+      }
+    },
+    "output": {
+      "out": {
+        "title": "out",
+        "group": "result",
+        "type": "boolean"
+      },
+      "by": {
+        "title": "Group By",
+        "group": "result",
+        "type": "any"
+      },
+      "xout": {
+        "title": "Xout",
+        "type": "array"
+      }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "chix-group": "psichi/chix-group"
+    }
+  }
+}

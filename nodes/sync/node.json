@@ -1,0 +1,40 @@
+{
+  "name": "sync",
+  "ns": "group",
+  "async": true,
+  "description": "Synchronizes group items on 2 different ports",
+  "phrases": {
+    "active": "Synchronizing items"
+  },
+  "ports": {
+    "input": {
+      "in1": {
+        "title": "In 1",
+        "type": "any"
+      },
+      "in2": {
+        "title": "In 2",
+        "type": "any"
+      },
+      "xin": {
+        "title": "In Group",
+        "type": "object"
+      }
+    },
+    "output": {
+      "out1": {
+        "title": "Out 1",
+        "type": "any"
+      },
+      "out2": {
+        "title": "Out 2",
+        "type": "any"
+      }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "chix-group": "psichi/chix-group"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "chix-group",
+  "description": "Group nodes for Chiχ",
+  "author": "Rob Halff <rob.halff@gmail.com>",
+  "version": "0.0.2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/group.git"
+  },
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "scripts": {
+    "test": "chit -r"
+  },
+  "dependencies": {
+    "chix-group": "nodule/group"
+  },
+  "devDependencies": {
+    "chit": "0.x.x"
+  },
+  "chix": {
+    "name": "group",
+    "color": "rgb(136,0,35)"
+  }
+}
