@@ -7,7 +7,7 @@
     "url": "https://github.com/nodule/group.git"
   },
   "dependencies": {
-    "chix-group": "nodule/group"
+    "chix-group": "psichi/chix-group"
   },
   "nodes": [
     {
