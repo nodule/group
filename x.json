@@ -135,6 +135,112 @@
       "ns": "group",
       "name": "sync",
       "fn": "on.start = function () {\n  state.sync = chix_group.sync.create(['out1', 'out2'])\n  state.sync.on('sync', function (itemId, set) {\n    var $ = state.$\n    var out = {}\n    Object.keys(set).forEach(function (port) {\n      out[port] = $.create(set[port])\n    })\n    output(out)\n  })\n}\n\non.input.in1 = function () {\n  state.sync.add('out1', $.get('in1'))\n}\n\non.input.in2 = function () {\n  state.sync.add('out2', $.get('in2'))\n}\n\non.input.xin = function () {\n  state.$ = $\n  state.sync.receive($.get('xin'))\n}\n"
+    },
+    {
+      "dependencies": {
+        "npm": {
+          "chix-group": "psichi/chix-group"
+        }
+      },
+      "ports": {
+        "input": {
+          "in1": {
+            "title": "In 1",
+            "type": "any"
+          },
+          "in2": {
+            "title": "In 2",
+            "type": "any"
+          },
+          "in3": {
+            "title": "In 3",
+            "type": "any"
+          },
+          "xin": {
+            "title": "In Group",
+            "type": "object"
+          }
+        },
+        "output": {
+          "out1": {
+            "title": "Out 1",
+            "type": "any"
+          },
+          "out2": {
+            "title": "Out 2",
+            "type": "any"
+          },
+          "out3": {
+            "title": "Out 3",
+            "type": "any"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Synchronizing items"
+      },
+      "description": "Synchronizes group items on 3 different ports",
+      "async": true,
+      "ns": "group",
+      "name": "sync3",
+      "fn": "on.start = function () {\n  state.sync = chix_group.sync.create(['out1', 'out2', 'out3'])\n  state.sync.on('sync', function (itemId, set) {\n    var $ = state.$\n    var out = {}\n    Object.keys(set).forEach(function (port) {\n      out[port] = $.create(set[port])\n    })\n    output(out)\n  })\n}\n\non.input.in1 = function () {\n  state.sync.add('out1', $.get('in1'))\n}\n\non.input.in2 = function () {\n  state.sync.add('out2', $.get('in2'))\n}\n\non.input.in3 = function () {\n  state.sync.add('out3', $.get('in3'))\n}\n\non.input.xin = function () {\n  state.$ = $\n  state.sync.receive($.get('xin'))\n}\n"
+    },
+    {
+      "dependencies": {
+        "npm": {
+          "chix-group": "psichi/chix-group"
+        }
+      },
+      "ports": {
+        "input": {
+          "in1": {
+            "title": "In 1",
+            "type": "any"
+          },
+          "in2": {
+            "title": "In 2",
+            "type": "any"
+          },
+          "in3": {
+            "title": "In 3",
+            "type": "any"
+          },
+          "in4": {
+            "title": "In 4",
+            "type": "any"
+          },
+          "xin": {
+            "title": "In Group",
+            "type": "object"
+          }
+        },
+        "output": {
+          "out1": {
+            "title": "Out 1",
+            "type": "any"
+          },
+          "out2": {
+            "title": "Out 2",
+            "type": "any"
+          },
+          "out3": {
+            "title": "Out 3",
+            "type": "any"
+          },
+          "out4": {
+            "title": "Out 4",
+            "type": "any"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Synchronizing items"
+      },
+      "description": "Synchronizes group items on 4 different ports",
+      "async": true,
+      "ns": "group",
+      "name": "sync4",
+      "fn": "on.start = function () {\n  state.sync = chix_group.sync.create(['out1', 'out2', 'out3', 'out4'])\n  state.sync.on('sync', function (itemId, set) {\n    var $ = state.$\n    var out = {}\n    Object.keys(set).forEach(function (port) {\n      out[port] = $.create(set[port])\n    })\n    output(out)\n  })\n}\n\non.input.in1 = function () {\n  state.sync.add('out1', $.get('in1'))\n}\n\non.input.in2 = function () {\n  state.sync.add('out2', $.get('in2'))\n}\n\non.input.in3 = function () {\n  state.sync.add('out3', $.get('in3'))\n}\n\non.input.in4 = function () {\n  state.sync.add('out4', $.get('in4'))\n}\n\non.input.xin = function () {\n  state.$ = $\n  state.sync.receive($.get('xin'))\n}\n"
     }
   ]
 }
