@@ -74,7 +74,7 @@ module.exports = {
           var $ = state.$
           var out = {}
           Object.keys(set).forEach(function(port) {
-            out[port] = $.create(set[port])
+            out[port] = set[port]
           })
           output(out)
         })
